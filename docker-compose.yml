@@ -1,0 +1,33 @@
+services:
+  postgres:
+    container_name: db
+    image: postgres
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+      - PGDATA=${DB_DATA}
+
+  backend:
+    container_name: backend
+    build: backend/
+    volumes:
+      - ./backend:/code/
+    depends_on:
+      - postgres
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT}
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+
+  frontend:
+    container_name: frontend
+    build: frontend/
+    volumes:
+      - ./frontend:/code/
+    depends_on:
+      - backend
+    environment:
+      - FRONTEND_PORT=${FRONTEND_PORT}
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
