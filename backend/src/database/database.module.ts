@@ -8,6 +8,11 @@ import { FriendRequest } from "./friendRequest.entity";
 import { BlockedUser } from "./blockedUser.entity";
 import { Game } from "./game.entity";
 import { GameInvite } from "./gameInvite.entity";
+import { ChannelOwner } from "./channelOwner.entity";
+import { Channel } from "./channel.entity";
+import { ChannelUser } from "./channelUser.entity";
+import { Message } from "./message.entity";
+import { ChannelInvite } from "./channelInvite.entity";
 
 @Module({
     imports: [
@@ -18,7 +23,7 @@ import { GameInvite } from "./gameInvite.entity";
             database: process.env.DB_NAME,
             username: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
-            entities: [User, Session, Friend, FriendRequest, BlockedUser, Game, GameInvite],
+            entities: [User, Session, Friend, FriendRequest, BlockedUser, Game, GameInvite, Channel, ChannelOwner, ChannelUser, Message, ChannelInvite],
             synchronize: true
         })
     ],

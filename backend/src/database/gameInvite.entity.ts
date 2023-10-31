@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Column } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity("GameInvite")
@@ -14,4 +14,6 @@ export class GameInvite{
     @JoinColumn({ name: "recipient_id" })
     recipient: User;
 
+    @Column({type: 'timestamptz'})
+    expires_at: Date;
 }
