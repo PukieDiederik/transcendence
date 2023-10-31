@@ -23,6 +23,6 @@ export class Session {
     @CreateDateColumn({ type: "timestamptz" })
     last_used: Date;
 
-    @Column({type: 'timestamptz'})
+    @Column({ type: "timestamptz" })
     expires_at: Date;
 }

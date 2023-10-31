@@ -23,7 +23,20 @@ import { ChannelInvite } from "./channelInvite.entity";
             database: process.env.DB_NAME,
             username: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
-            entities: [User, Session, Friend, FriendRequest, BlockedUser, Game, GameInvite, Channel, ChannelOwner, ChannelUser, Message, ChannelInvite],
+            entities: [
+                User,
+                Session,
+                Friend,
+                FriendRequest,
+                BlockedUser,
+                Game,
+                GameInvite,
+                Channel,
+                ChannelOwner,
+                ChannelUser,
+                Message,
+                ChannelInvite
+            ],
             synchronize: true
         })
     ],
