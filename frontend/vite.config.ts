@@ -6,9 +6,11 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  clearScreen: false,
+
   server: {
     host: true,
-    port: parseInt(<string>process.env['FRONTEND_PORT']),
+    port: parseInt(<string>process.env['PORT']),
     strictPort: true,
   },
   plugins: [
