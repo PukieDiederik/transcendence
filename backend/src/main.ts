@@ -13,13 +13,13 @@ async function bootstrap() {
         "DB_PASSWORD"
     ];
     let has_undefined = false;
+
     for (const e of required_envs) {
         if (process.env[e] == undefined) {
             Logger.error("Undefined enviroment variable: " + e);
             has_undefined = true;
         }
     }
-
     if (has_undefined) return;
 
     const app = await NestFactory.create(AppModule);
