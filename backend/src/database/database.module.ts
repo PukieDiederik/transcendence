@@ -58,6 +58,7 @@ import { FriendService } from "./friend.service";
             ChannelInvite])
     ],
     providers: [UserService, ChannelService, BlockedUserService, FriendService],
-    controllers: []
+    controllers: [],
+    exports: [UserService, ChannelService, BlockedUserService, FriendService]
 })
 export class DBModule {}

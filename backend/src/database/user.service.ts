@@ -8,7 +8,8 @@ export class UserService{
     constructor( @InjectRepository(User) private rep: Repository<User>) {}
 
     create(intra_id : number, username: string, profile_image : string) : Promise<User> {
-        const user = this.rep.create({intra_id : intra_id, username : username, profile_image : profile_image});
+        const cur_time = Date.now();
+        const user = this.rep.create({intra_id : intra_id, username : username, profile_image : profile_image, last_online: cur_time});
         return this.rep.save(user);
     }
 
