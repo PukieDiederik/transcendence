@@ -7,6 +7,8 @@ services:
       - POSTGRES_PASSWORD=${DB_PASS}
       - POSTGRES_DB=${DB_NAME}
       - PGDATA=${DB_DATA}
+    ports:
+      - ${DB_PORT}:5432
 
   backend:
     container_name: backend
@@ -16,7 +18,12 @@ services:
     depends_on:
       - postgres
     environment:
-      - BACKEND_PORT=${BACKEND_PORT}
+      - PORT=${BACKEND_PORT}
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USER}
+      - DB_PASSWORD=${DB_PASS}
     ports:
       - ${BACKEND_PORT}:${BACKEND_PORT}
 
@@ -28,6 +35,6 @@ services:
     depends_on:
       - backend
     environment:
-      - FRONTEND_PORT=${FRONTEND_PORT}
+      - PORT=${FRONTEND_PORT}
     ports:
       - ${FRONTEND_PORT}:${FRONTEND_PORT}
