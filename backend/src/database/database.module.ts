@@ -2,17 +2,21 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { User } from "./user.entity";
+import { UserService } from "./user.service";
 import { Session } from "./session.entity";
 import { Friend } from "./friend.entity";
 import { FriendRequest } from "./friendRequest.entity";
 import { BlockedUser } from "./blockedUser.entity";
+import { BlockedUserService } from "./blockedUser.service";
 import { Game } from "./game.entity";
 import { GameInvite } from "./gameInvite.entity";
-import { ChannelOwner } from "./channelOwner.entity";
 import { Channel } from "./channel.entity";
+import { ChannelService } from "./channel.service";
+import { ChannelOwner } from "./channelOwner.entity";
 import { ChannelUser } from "./channelUser.entity";
 import { Message } from "./message.entity";
 import { ChannelInvite } from "./channelInvite.entity";
+import { FriendService } from "./friend.service";
 
 @Module({
     imports: [
@@ -38,9 +42,22 @@ import { ChannelInvite } from "./channelInvite.entity";
                 ChannelInvite
             ],
             synchronize: true
-        })
+        }),
+        TypeOrmModule.forFeature([
+            User,
+            Session,
+            Friend,
+            FriendRequest,
+            BlockedUser,
+            Game,
+            GameInvite,
+            Channel,
+            ChannelOwner,
+            ChannelUser,
+            Message,
+            ChannelInvite])
     ],
-    controllers: [],
-    providers: []
+    providers: [UserService, ChannelService, BlockedUserService, FriendService],
+    controllers: []
 })
 export class DBModule {}
